@@ -1,27 +1,37 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
-	"github.com/gin-gonic/gin"
-	"github.com/go-filter-pokemon-api/controllers"
 	"github.com/go-filter-pokemon-api/requests"
 	"github.com/go-filter-pokemon-api/services"
 )
 
 func main() {
 
-	os.Setenv("PokemonURL", "http://3.19.60.251:3000/api/v2/pokemon")
+	os.Setenv("PokemonURL", "http://18.119.14.15:3000/api/v2/pokemon")
 
-	r := gin.Default()
+	/*
+		r := gin.Default()
 
-	controllers.InitFilterController(
-		services.Filters{
-			ApiRequest: &requests.PokeApiRequest{},
-		},
-		r,
-	)
+		controllers.InitFilterController(
+			services.Filters{
+				ApiRequest: &requests.PokeApiRequest{},
+			},
+			r,
+		)
 
-	r.Run()
+		r.Run()
+
+	*/
+
+	a := services.Filters{
+		ApiRequest: &requests.PokeApiRequest{},
+	}
+
+	v, _, _, _ := a.WeightAndHeight(100, 100)
+
+	fmt.Println(v)
 
 }

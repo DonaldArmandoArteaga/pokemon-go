@@ -2,6 +2,7 @@ package requests
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -33,7 +34,7 @@ func (*PokeApiRequest) GetPokemonByUrlId(url string) (*models.Pokemon, error) {
 
 	var pokemon *models.Pokemon
 	json.Unmarshal(body, &pokemon)
-
+	fmt.Println(pokemon)
 	return pokemon, nil
 }
 
